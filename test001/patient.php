@@ -138,9 +138,9 @@ class patient
 	{
 		try {// prepare select query
 			$query = "SELECT id_patient, patient_name, admission, description
-			FROM patient WHERE id_patient = $id_user LIMIT 5,1";
+			FROM patient WHERE id_patient = :id_user ";
 			$stmt = $this->con->prepare( $query );
-			$stmt->bindParam(1, $id);// this is the first question mark
+			$stmt->bindParam(':id_user',$id_user);
 			$stmt->execute();// execute our query
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);// store retrieved row to a variable
 			#
