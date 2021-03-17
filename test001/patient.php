@@ -60,6 +60,18 @@ class patient
 		return $stmt;
 	}
 #--------------------------------------------------------------------------------------------------
+	public function ReadOneV02($id_user)
+	{
+		$query = "SELECT id_patient, patient_name, admission, description
+		FROM patient WHERE id_patient = :id_user ";
+		$stmt = $this->con->prepare( $query );
+		$stmt->bindParam(':id_user',$id_user);
+		$stmt->execute();// execute our query
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);// store retrieved row to a variable
+
+		return $row;
+	}
+#--------------------------------------------------------------------------------------------------
 	public function UpdatePatient($id_patient)
 	{
 		$query = "UPDATE patient
@@ -137,13 +149,8 @@ class patient
 	public function print_user($id_user)
 	{
 		try {// prepare select query
-			$query = "SELECT id_patient, patient_name, admission, description
-			FROM patient WHERE id_patient = :id_user ";
-			$stmt = $this->con->prepare( $query );
-			$stmt->bindParam(':id_user',$id_user);
-			$stmt->execute();// execute our query
-			$row = $stmt->fetch(PDO::FETCH_ASSOC);// store retrieved row to a variable
-			#
+			$row = ReadOneV($id_user);
+			//$row = ReadOneV02($id_user);
 			$this->dataStyleV00($row);
 			//return $result;
 			//$endresult=$pdf->Output();
