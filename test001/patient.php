@@ -151,12 +151,13 @@ class patient
 		try {// prepare select query
 			$row = $this->ReadOneV02($id_user);
 			//$this->debugDataSqlDaa($row);
+			$this->paparPdf($row);
 			//return $result;
 			//$endresult=$pdf->Output();
 		}
 		// show error
 		catch(PDOException $exception){
-			die('ERROR: ' .$exception->getMessage());
+			die('ERROR: ' . $exception->getMessage());
 		}
 	}
 #--------------------------------------------------------------------------------------------------
