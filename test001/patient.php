@@ -176,6 +176,10 @@ class patient
 	function debugDataSqlDaa($row)
 	{
 		semakPembolehubah($row,'data row');
+		if(isset($this->id_patient)) semakPembolehubah($this->id_patient,'this->id_patient');
+		if(isset($this->patient_name)) semakPembolehubah($this->patient_name,'this->patient_name');
+		if(isset($this->description)) semakPembolehubah($this->description,'this->description');
+		if(isset($this->admission)) semakPembolehubah($this->admission,'this->admission');
 	}
 #--------------------------------------------------------------------------------------------------
 	function dataStyleV01()
