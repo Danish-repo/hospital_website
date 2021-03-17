@@ -151,7 +151,7 @@ class patient
 		try {// prepare select query
 			$row = ReadOneV($id_user);
 			//$row = ReadOneV02($id_user);
-			$this->dataStyleV00($row);
+			//$this->dataStyleV00($row);
 			//return $result;
 			//$endresult=$pdf->Output();
 		}
@@ -173,7 +173,7 @@ class patient
 		#
 	}
 #--------------------------------------------------------------------------------------------------
-	function dataStyleV00($row)
+	function debugDataSqlDaa($row)
 	{
 		semakPembolehubah($row,'data row');
 	}
