@@ -1,6 +1,8 @@
 <?php
-include 'tatarajah.php';
-include 'Database.php';
+require 'tatarajah.php';
+require 'Database.php';
+require 'fpdf182/fpdf.php';
+require 'class_fpdfv01.php';
 ?><!DOCTYPE HTML>
 <html>
 <head>
@@ -20,10 +22,11 @@ $id=isset($_GET['id_patient']) ? $_GET['id_patient'] : die('ERROR: Record ID not
 
 $body1=new Database();
 $link=$body1->MyDatabase();
-$body2=new patient($link);
+/*$body2=new patient($link);
 
 $body2->print_user($id);
-  ?>
+//*/
+?>
 </div><!-- end .container -->
      
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
