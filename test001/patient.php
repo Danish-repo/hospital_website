@@ -142,6 +142,7 @@ class patient
 			$stmt = $this->con->prepare( $query );
 			$stmt->bindParam(1, $id);// this is the first question mark
 			$stmt->execute();// execute our query
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);//// store retrieved row to a variable
 			//return $result;
 			//$endresult=$pdf->Output();
 		}
@@ -165,9 +166,6 @@ class patient
 #--------------------------------------------------------------------------------------------------
 	function dataStyleV01()
 	{
-		// store retrieved row to a variable
-		//$row = $stmt->fetch(PDO::FETCH_ASSOC);
-
 		// values to fill up our form
 		/*$this->id_patient = $row['id_patient'];
 		$this->patient_name = $row['patient_name'];
