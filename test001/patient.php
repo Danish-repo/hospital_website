@@ -163,7 +163,6 @@ class patient
 	function paparPdf($row)
 	{
 		ob_start();
-		require('fpdf182/fpdf.php');
 		$pdf = new FPDF();
 		$pdf->AddPage();
 		$pdf->SetFont('Arial','B',14);
@@ -182,14 +181,12 @@ class patient
 	function paparPdfV02($row)
 	{
 		ob_start();
-		require('fpdf182/fpdf.php');
-		require('class_fpdfv01.php');
 		#
 		$pdf = new PDF();
 		// Column headings
 		$header = array('Country', 'Capital', 'Area (sq km)', 'Pop. (thousands)');
 		// Data loading
-		$data = $pdf->LoadData('countries.txt');
+		$data = $pdf->LoadData('fpdf182/countries.txt');
 		$pdf->SetFont('Arial','',14);
 		$pdf->AddPage();
 		$pdf->BasicTable($header,$data);
