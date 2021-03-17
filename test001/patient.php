@@ -149,9 +149,8 @@ class patient
 	public function print_user($id_user)
 	{
 		try {// prepare select query
-			$row = ReadOneV($id_user);
-			//$row = ReadOneV02($id_user);
-			//$this->dataStyleV00($row);
+			$row = $this->ReadOneV02($id_user);
+			//$this->debugDataSqlDaa($row);
 			//return $result;
 			//$endresult=$pdf->Output();
 		}
@@ -168,6 +167,13 @@ class patient
 		$pdf = new FPDF();
 		$pdf->AddPage();
 		$pdf->SetFont('Arial','B',14);
+		# papar data $row
+		$pdf->Cell(20,10,$row['id_patient'],1);
+		$pdf->Cell(40,10,$row['patient_name'],1);
+		$pdf->Cell(80,10,$row['description'],1);
+		$pdf->Cell(40,10,$row['admission'],1);
+		$pdf->Ln();
+		#
 		$pdf->Output();
 		ob_end_flush();
 		#
