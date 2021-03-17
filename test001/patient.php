@@ -151,9 +151,8 @@ class patient
 		try {// prepare select query
 			$row = $this->ReadOneV02($id_user);
 			//$this->debugDataSqlDaa($row);
-			$this->paparPdf($row);
-			//return $result;
-			//$endresult=$pdf->Output();
+			//$this->paparPdf($row);
+			$this->paparPdfV02($row);
 		}
 		// show error
 		catch(PDOException $exception){
@@ -164,7 +163,7 @@ class patient
 	function paparPdf($row)
 	{
 		ob_start();
-		require('fpdf/fpdf.php');
+		require('fpdf182/fpdf.php');
 		$pdf = new FPDF();
 		$pdf->AddPage();
 		$pdf->SetFont('Arial','B',14);
@@ -178,6 +177,29 @@ class patient
 		$pdf->Output();
 		ob_end_flush();
 		#
+	}
+#--------------------------------------------------------------------------------------------------
+	function paparPdfV02($row)
+	{
+		ob_start();
+		require('fpdf182/fpdf.php');
+		require('class_fpdfv01.php');
+		#
+		$pdf = new PDF();
+		// Column headings
+		$header = array('Country', 'Capital', 'Area (sq km)', 'Pop. (thousands)');
+		// Data loading
+		$data = $pdf->LoadData('countries.txt');
+		$pdf->SetFont('Arial','',14);
+		$pdf->AddPage();
+		$pdf->BasicTable($header,$data);
+		$pdf->AddPage();
+		$pdf->ImprovedTable($header,$data);
+		$pdf->AddPage();
+		$pdf->FancyTable($header,$data);
+		#
+		$pdf->Output();
+		ob_end_flush();
 	}
 #--------------------------------------------------------------------------------------------------
 	function debugDataSqlDaa($row)
