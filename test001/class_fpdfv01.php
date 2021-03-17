@@ -18,6 +18,8 @@ class PDF extends FPDF
 	// Simple table
 	function BasicTable($header, $data)
 	{
+		//semakPembolehubah($header,'header');
+		//semakPembolehubah($data,'data');
 		// Header
 		foreach($header as $col)
 			$this->Cell(40,7,$col,1);
@@ -85,6 +87,15 @@ class PDF extends FPDF
 		// Closing line
 		$this->Cell(array_sum($w),0,'','T');
 	}
+#--------------------------------------------------------------------------------------------------
+	function SetDash($black=null, $white=null)
+    {
+        if($black!==null)
+            $s=sprintf('[%.3F %.3F] 0 d',$black*$this->k,$white*$this->k);
+        else
+            $s='[] 0 d';
+        $this->_out($s);
+    }
 #--------------------------------------------------------------------------------------------------
 #==================================================================================================
 }
