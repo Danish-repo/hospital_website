@@ -13,6 +13,7 @@ $body1 = new Database();
 $link = $body1->MyDatabase();
 $body2 = new patient($link);
 $row = $body2->ReadOneV02($id);
+//semakPembolehubah($row,'row');# semak nilai $row wujud atau tidak
 #--------------------------------------------------------------------------------------------------
 # mula panggil fail pdf
 //$pdf = new FPDF();
